@@ -3,19 +3,23 @@ import svd from "svd-finder";
 
 // TODO: unsure about the dot mult tho :/
 export default function procrustus(
-  M1: number[][],
-  M2: number[][],
+  target: number[][],
+  input: number[][],
   scaling: boolean = true
   //   reflection: string | boolean = "best"
 ) {
-  const X = mt.matrix(M1);
-  const Y = mt.matrix(M2);
+  const X = mt.matrix(target);
+  const Y = mt.matrix(input);
 
   const [n, m] = X.size();
   const [ny, my] = Y.size();
 
+  console.log("dimension");
+
   const muX = mt.mean(X, 0) as number;
   const muY = mt.mean(Y, 0) as number;
+
+  console.log(muX, muY);
 
   let X0 = mt.subtract(X, muX) as Matrix;
   let Y0 = mt.subtract(Y, muY) as Matrix;
@@ -30,6 +34,7 @@ export default function procrustus(
   X0 = mt.divide(X0, normX) as Matrix;
   Y0 = mt.divide(Y0, normY) as Matrix;
 
+  // @ts-ignore
   if (my > ny) Y0 = mt.concat(Y0, mt.zeros(n, m - my), 0) as Matrix;
 
   // optimum rotation matrix of Y

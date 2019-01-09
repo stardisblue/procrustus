@@ -32,7 +32,7 @@ function procrustus(M1, M2, scaling
     var _c = svd_finder_1.default(A), U = _c.u, V = _c.v, s = _c.q;
     var T = mathjs_1.default.multiply(V, mathjs_1.default.transpose(U));
     //   if (reflection !== "best") {
-    //     // does the current solution use a reflection?
+    //     // does the current solution use a reflection ?
     //     // if that's not what was specified, force another reflection
     //     if (reflection != mt.det(T) < 0) {
     //     }
