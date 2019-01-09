@@ -1,0 +1,27 @@
+{
+  "name": "procrustusjs",
+  "version": "1.0.0",
+  "description": "procrustus analysis",
+  "main": "index.js",
+  "repository": "https://github.com/stardisblue/procrustusjs",
+  "author": "Fati CHEN <chen@lirmm.fr>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@types/mathjs": "^4.4.4",
+    "mathjs": "^5.4.0",
+    "ml-matrix": "^5.2.0",
+    "svd-finder": "^0.2.1"
+  },
+  "scripts": {
+    "precommit": "mocha --reporter nyan -r ts-node/register test/**/*.ts && tsc",
+    "build": "tsc",
+    "test": "mocha --reporter nyan -r ts-node/register test/**/*.ts"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
