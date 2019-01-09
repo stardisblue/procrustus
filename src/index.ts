@@ -39,7 +39,7 @@ export default function procrustus(
 
   let T = mt.multiply(V, mt.transpose(U)) as number[][];
   //   if (reflection !== "best") {
-  //     // does the current solution use a reflection?
+  //     // does the current solution use a reflection ?
   //     // if that's not what was specified, force another reflection
   //     if (reflection != mt.det(T) < 0) {
 

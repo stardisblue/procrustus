@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mathjs_1 = __importDefault(require("mathjs"));
 var svd_finder_1 = __importDefault(require("svd-finder"));
+// TODO: unsure about the dot mult tho :/
 function procrustus(M1, M2, scaling
 //   reflection: string | boolean = "best"
 ) {
@@ -48,13 +49,13 @@ function procrustus(M1, M2, scaling
     }
     else {
         b = 1;
-        d = 1;
+        d = 1 + ssY / ssX - (2 * traceTA * normY) / normX;
         Z = normY * mathjs_1.default.dot(Y0, T) + muX;
     }
     // transformation matrix
     if (my < m)
         T = T.slice(my);
-    var c = muX - b * mathjs_1.default.dot(muY, T);
+    var c = muX - b * mathjs_1.default.multiply(muY, T);
     var tform = { rotation: T, scale: b, translation: c };
     return { d: d, Z: Z, tform: tform };
 }
